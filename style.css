@@ -65,7 +65,7 @@ h1 {
 h2 {
   font-size: calc(1em + 2vw);
   color: #fff;
-  font-family: "Caveat", sans-serif;
+  font-family: "Caveat";
   text-align: center;
   padding: 0em;
   transform: rotate(-4deg) translateY(-15vh);
