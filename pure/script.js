@@ -153,7 +153,7 @@ function makePrediction(handLandmarks, faceLandmarks) {
         return "rightEye"
     } else if (distance(cursor, nose) < 0.8 * size) {
         return "nose"
-    } else if (distance(cursor, mouth) < 0.6 * size) {
+    } else if (distance(cursor, mouth) < 0.8 * size) {
         return "mouth"
     } else { 
         return "N/A"
