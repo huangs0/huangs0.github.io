@@ -146,15 +146,15 @@ function makePrediction(handLandmarks, faceLandmarks) {
         return "N/A"
     }
     let cursor = midpoint(indexTip, middleTip)
-    console.log(distance(cursor, leftEye), distance(cursor, rightEye), size)
+    
     if (distance(cursor, leftEye) < 0.5 * size) {
         return "leftEye"
     } else if (distance(cursor, rightEye) < 0.5 * size) {
         return "rightEye"
-    } else if (distance(cursor, mouth) < 0.3 * size) {
-        return "mouth"
-    } else if (distance(cursor, nose) < 0.3 * size) {
+    } else if (distance(cursor, nose) < 0.4 * size) {
         return "nose"
+    } else if (distance(cursor, mouth) < 0.4 * size) {
+        return "mouth"
     } else { 
         return "N/A"
     }
