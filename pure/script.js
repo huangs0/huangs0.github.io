@@ -46,7 +46,8 @@ createHandLandmarker();
 
 let video = document.getElementById("webcam");
 const liveView = document.getElementById("liveView");
-const predictionOutput = document.getElementById("prediction")
+const predictionOutput = document.getElementById("overlay")
+
 // Check if webcam access is supported.
 const hasGetUserMedia = () => {
     var _a;
@@ -105,7 +106,7 @@ async function predictWebcam() {
         lastVideoTime = video.currentTime;
         faceDetections = faceDetector.detectForVideo(video, startTimeMs).detections;
         handDetections = handLandmarker.detectForVideo(video, startTimeMs);
-        
+
         // Clear
         // Remove any highlighting from previous frame.
         for (let child of children) {
@@ -116,7 +117,7 @@ async function predictWebcam() {
         displayHandDetections(handDetections);
         displayFaceDetections(faceDetections);
         if (handDetections.landmarks.length >= 1 && faceDetections.length >= 1) { 
-            predictionOutput.innerText = makePrediction(handDetections.landmarks[0], faceDetections[0].keypoints)
+            predictionOutput.innerText = "Prediction: " + makePrediction(handDetections.landmarks[0], faceDetections[0].keypoints)
         }
     }
     // Call this function again to keep predicting when the browser is ready
@@ -131,10 +132,6 @@ function midpoint(point1, point2) {
     return { x: ( point1.x + point2.x ) / 2, y: ( point1.y + point2.y ) / 2 }
 }
 
-function vector(point1, point2) { 
-    return { dx: point2.x - point1.x, dy: point2.y - point1.y}
-}
-
 function makePrediction(handLandmarks, faceLandmarks) { 
     let rightEye = faceLandmarks[0], leftEye = faceLandmarks[1], nose = faceLandmarks[2], mouth = faceLandmarks[3]
     let indexTip = handLandmarks[8], middleTip = handLandmarks[12], ringTip = handLandmarks[16];
@@ -146,7 +143,6 @@ function makePrediction(handLandmarks, faceLandmarks) {
         return "N/A"
     }
     let cursor = midpoint(indexTip, middleTip)
-    
     if (distance(cursor, leftEye) < 0.5 * size) {
         return "leftEye"
     } else if (distance(cursor, rightEye) < 0.5 * size) {
@@ -174,19 +170,6 @@ function displayHandDetections(detections) {
         }
     }
 }
-
-/*
-function displayHandDetections(handDetection) { 
-    canvasCtx.save();
-    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-    if (handDetection.landmarks) {
-        for (const landmarks of handDetection.landmarks) {
-            drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 1 });
-        }
-    }
-    canvasCtx.restore();
-}
-*/
 
 function displayFaceDetections(detections) {
     // Iterate through predictions and draw them to the live view
