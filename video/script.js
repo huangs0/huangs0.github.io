@@ -21,7 +21,7 @@ const initializefaceDetector = async () => {
     const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm");
     faceDetector = await FaceDetector.createFromOptions(vision, {
         baseOptions: {
-            modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite`,
+            modelAssetPath: `./blaze_face_short_range.tflite`,
             delegate: "GPU"
         },
         runningMode: runningMode
@@ -33,7 +33,7 @@ const createHandLandmarker = async () => {
     const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm");
     handLandmarker = await HandLandmarker.createFromOptions(vision, {
         baseOptions: {
-            modelAssetPath: `https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task`,
+            modelAssetPath: `./hand_landmarker.task`,
             delegate: "GPU"
         },
         runningMode: runningMode,
