@@ -46,6 +46,7 @@ em {
 video {
   clear: both;
   display: block;
+  width: 100%;
   -webkit-box-pack: center;
     -ms-flex-pack: center;
       justify-content: center;
@@ -72,7 +73,7 @@ section {
 
 .videoView {
   margin: auto;
-  width: 60%;
+  width: 100%;
   -webkit-box-pack: center;
     -ms-flex-pack: center;
       justify-content: center;
