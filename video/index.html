@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>HOF2 TV Controller Demo</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<video id="media" controls>
+  <source src="video/sintel-short.mp4" type="video/mp4">
+</video>
+<h2 id="overlay">Prediction: </h2>
+<div id="container">
+  <div id="liveView" class="videoView">
+    <button id="webcamButton" class="mdc-button mdc-button--raised">
+      <span class="mdc-button__ripple"></span>
+      <span class="mdc-button__label">START</span>
+    </button>
+    <video id="webcam" class="camera" autoplay playsinline></video>
+  </div>
+</div>
+
+<script type="module" src="./script.js"></script>
+
+</body>
+</html>
