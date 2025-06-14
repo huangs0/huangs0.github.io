@@ -12,7 +12,7 @@ Then you can start the development server by:
 npm install
 # development server
 npx next dev
-# build and upload to github.io
+# build and upload, output in `/out`
 npx next build
 ```
 
